@@ -1,0 +1,27 @@
+services:
+  storage:
+    image: redis
+    volumes:
+      - ./data:/data
+  counter:
+    image: viktorbauer/library-counter:v0.0.1 
+    environment:
+      - PORT=3003 
+      - REDIS_URL=redis://storage
+    depends_on:
+      - storage
+  library:
+    image: viktorbauer/library:v1.0.1
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 80:3000
+    environment:
+      - PORT=3000
+      - COUNTER_URL=http://counter:3003
+    command: npm run dev
+    depends_on: 
+      - counter
+
+

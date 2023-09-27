@@ -1,0 +1,26 @@
+<%- include("../ports/layout-start", {title: title}) %>
+<%- include("../ports/menu") %>
+
+<h1><%= title %></h1>
+
+<div class="row">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Title: <%= books.title %></h5>
+                <p class="card-text">Description: <%= books.description %></p>
+                <p class="card-text">Authors: <%= books.authors %></p>
+                <p class="card-text">Favorite: <%= books.favorite %></p>
+                <p class="card-text">FileCover: <%= books.fileCover %></p>
+                <p class="card-text">FileName: <%= books.fileName %></p>
+                <p class="card-text">FileBook: <%= books.fileBook %></p>
+                <p class="card-text">Количество просмотров: <%= counter %></p>
+                <div class="text-right">
+                    <a href="/api/books" class="btn btn-primary">Закрыть</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../ports/layout-end") %>
